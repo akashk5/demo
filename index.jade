@@ -1,0 +1,57 @@
+//   Created by shridharp2 on 16-03-2016.
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml', ng-app='dmm')
+	head
+		title KPIT - DMM
+		link(href='css/bootstrap/css/bootstrap.css', rel='stylesheet')
+		link(rel='icon', type='image/png', href='img/favicon.png')
+		link(href='css/datetimepicker.css', rel='stylesheet')
+		link(href='js/libs/ngGallery/ngGallery.css', rel='stylesheet')
+		link(href='css/main.css', rel='stylesheet')
+	body(ng-controller='loginController as LC')
+		nav.navbar.navbar-default.navbar-fixed-top
+			.container
+				// Brand and toggle get grouped for better mobile display
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='javascript:void(0);')
+						img(src='img/logo_small.png', alt='logo')
+						span.app-name DMM
+				// Collect the nav links, forms, and other content for toggling
+				#bs-example-navbar-collapse-1.collapse.navbar-collapse
+					ul.nav.navbar-nav.navbar-right
+						//
+							<li><a href="index.html" >User</a></li>
+							<li class="active"><a href="#" >Manual Tracking</a></li>
+						li.dropdown(ng-show='isAuth')
+							a.dropdown-toggle(href='javascript:void(0);', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+								span(ng-bind='uname')
+								span.caret
+							ul.dropdown-menu
+								// <li><a href="#">settings</a></li>
+								li
+									a(href='javascript:void(0);', ng-click='LC.logout()') logout
+
+		.container(ng-view)
+
+		script(src='js/libs/jquery-1.11.3.js')
+		script(src='js/libs/angular.1.4.7.js')
+		script(src='js/libs/angular-route.js')
+		script(src='js/libs/angular-animate.js')
+		script(src='js/libs/ng-file-upload.js')
+		script(src='css/bootstrap/js/bootstrap.js')
+		script(src='js/libs/ui-bootstrap-0.14.3.js')
+		script(src='js/libs/datetimepicker-zhaber.js')
+		script(src='js/app.js')
+		script(src='js/services/dmmFactories.js')
+		script(src='js/directives/directives.js')
+		script(src='js/controllers/loginController.js')
+		script(src='js/controllers/eventListController.js')
+		script(src='js/controllers/eventDetailsController.js')
+		script(src='js/controllers/addEventController.js')
+		script(src='js/controllers/editEventController.js')
+

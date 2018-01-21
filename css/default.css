@@ -1,0 +1,258 @@
+body {
+	font-family: "Segoe UI";
+	margin: 0px;
+}
+
+form {
+	margin: 0px;
+}
+
+
+	
+	
+
+
+
+#banner_inner_bg {
+	background-color: #0089CF;
+	height: 60px;    
+	line-height: 35px;
+	width:100%;
+	float:left;
+	border-bottom: 1px solid #FFF;
+}
+
+#appName{
+	font-size: 25px;
+	font-weight: bold;
+	color: #FFF;
+	padding-top: 9px;
+	float:left;
+	width:60%
+}
+#logout{
+	vertical-align: middle;
+	float:right;
+	padding-top: 19px;
+}
+#KPITLogo{
+	vertical-align: middle;
+	float:right;
+}
+#menubg {
+	background-color: #D7DF23;
+	width:100%;
+	float:left;
+}
+
+#content{
+	float:left;
+	width:100%;
+	margin-top:12px;
+}
+
+#header_text {
+	font-size: 16px;
+	color: #069;
+	line-height: 18px;
+	font-weight: bold;
+	float:left;
+	padding-left: 20px;
+}
+
+
+.bb th {
+	border-top: 1px solid #999999 !important;
+	border-bottom: 1px solid #999999 !important;
+	background-color:#DDF4FF;
+	padding:6px;
+	height:25px;
+	font-family: 'Segoe UI';
+	font-size:12px;
+}
+.bb td {
+     border-bottom: 1px solid #cccccc !important;
+     padding:6px;
+    font-size: 13px;
+    color: #000;
+    line-height: 15px;
+}
+
+.edit_links {
+	text-decoration:underline;
+	color:#F60;
+}
+.edit_links:hover {
+	text-decoration:none;
+	color:#000000;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    float:left;
+    padding-top:20px;
+    padding-right:20px;
+}
+
+.input-group5 {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width:5%;
+    float:left;
+    padding-top:20px;
+}
+.input-group10 {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width:10%;
+    float:left;
+    padding-top:20px;
+}
+.input-group25 {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width:25%;
+    float:left;
+    padding-top:20px;
+}
+
+.input-group30 {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width:30%;
+    float:left;
+    padding-top:20px;
+}
+
+.spantext{
+	border-right: 0px none;
+	font-size: 12px;
+	background-color: #DFDFDF;
+	padding: 6px 12px;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 1.5;
+	color: #555;
+	text-align: center;
+	background-color: #EEE;
+	border: 1px solid #A4A4A4;
+	border-radius: 4px;
+	float:left;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.inputtext {
+	display: table-cell;
+	padding: 6px 12px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #555;
+	background-color: #FFF;
+	background-image: none;
+	border-top: 1px solid #A4A4A4;
+	border-right: 1px solid #A4A4A4;
+	border-bottom: 1px solid #A4A4A4;
+	border-left: none;
+	border-radius: 4px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+   }
+   
+  
+   .inputselect {
+   	display: table-cell;
+   	padding: 6px 12px;
+   	font-size: 13px;
+   	line-height: 1.5;
+   	color: #555;
+   	background-color: #FFF;
+   	background-image: none;
+   	border: 1px solid #A4A4A4;
+   	border-radius: 4px;
+   }
+   
+   .saveupdate {
+   	float: right;
+   	margin: 0px 10px 0px 0px;
+   	padding: 6px 20px;
+   	font-size: 12px;
+   	font-weight: 500;
+   	color: #000;
+   	text-decoration: none;
+   	background: none repeat scroll 0% 0% #D7DF23;
+   }
+   
+.saveupdate:hover {
+	color: #FFF;
+}
+   
+   .delete {
+   	float: right;
+   	margin: 0px 10px 0px 0px;
+   	padding: 6px 20px;
+   	font-size: 12px;
+   	font-weight: 500;
+   	color: #FFF;
+   	text-decoration: none;
+   	background: none repeat scroll 0% 0% #FA7319;
+   }
+   .delete:hover {
+   	color: #185C3B;
+}
+   
+   .search {
+   	float: right;
+   	margin: 0px 10px 0px 0px;
+   	padding: 6px 20px;
+   	font-size: 12px;
+   	font-weight: 500;
+   	color: #FFF;
+   	text-decoration: none;
+   	background: none repeat scroll 0% 0% #0089CF;
+   }
+   .search:hover {
+   	color: #78FAFF;
+}
+
+.login_bg {
+	background-image:url(../images/login_bg.jpg);
+	background-position:left top;
+	background-repeat: no-repeat;
+	width:405px;
+	height:186px;
+}
+.login_watermark {
+	background-image:url(../images/login_watermark.jpg);
+	background-position:left top;
+	background-repeat: no-repeat;
+	width:1000px;
+	height:168px;
+}
+.white_text {
+	color: #ffffff;
+	font-size:13px;
+}
+
+	.banner_inner_bg {
+	background-color:#0089cf;
+	height:60px;
+	font-family:"Segoe UI";
+	font-size:25px;
+	font-weight:bold;
+	color:#FFF;
+	vertical-align:middle;
+	line-height:35px;
+}
+	
+	.menu_bg {
+	background-color:#d7df23;
+	height:25px;
+}
+	

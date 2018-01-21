@@ -1,0 +1,22 @@
+<form name="manualForm" class="manual-input">
+    <h2 class="manual-input-heading">Login
+    </h2>
+    <div class="text-block">
+        <input type="text" class="form-control manual-text up" name="employeeid" ng-class="{'error':manualForm.employeeid.$error.maxlength}" ng-model="LC.userName" placeholder="Username" required="" autofocus="">
+        <span  class="glyphicon glyphicon-user"></span>
+
+    </div>
+    <div class="text-block">
+        <input type="password" class="form-control manual-text down" ng-class="{'error':manualForm.assetid.$error.maxlength}" name="assetid" ng-model="LC.passWord" placeholder="Password" required="">
+        <span class="glyphicon glyphicon-briefcase"></span>
+
+    </div>
+    <button class="btn btn-lg btn-success btn-block manual-btn" type="submit" ng-click="LC.LoginSave();">Submit</button>
+    <span class="glyphicon glyphicon-repeat manual-refresh" title="Clear Fields" ng-if="LC.userName!='' || LC.passWord!=''" ng-click="LC.reset()"></span>
+</form>
+
+<div class="manual-alert" >
+    <span class="alert alert-danger" role="alert" ng-show="LC.showError" >
+        <strong>Login failed!</strong> &nbsp;Invalid username or password, please try again.
+    </span>
+</div>

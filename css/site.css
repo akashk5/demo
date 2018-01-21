@@ -1,0 +1,141 @@
+html, body{font-family: 'Open Sans'; background-color: #f8f8f8; height: 100%}
+
+
+/*------------------- NAV BAR --------------------*/ 
+nav.navbar {background-color: #0095da; color: #fff; border-bottom: 5px solid #D7DF23;  box-shadow: 0 3px 4px -1px rgba(0,0,0,0.2);}
+.navbar .navbar-header .navbar-brand img{display: inline-block;}
+.navbar .navbar-header .navbar-brand .app-name{ float:right;font-size: 14px;color: #eee;line-height: 14px; margin-left: 30px; margin-top: 5px; font-style: italic;}
+.navbar-default .navbar-nav > li > a{color: #ddd}
+.navbar-default .navbar-nav > li > a:hover{color: #fff;}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{background-color: rgba(255,255,255,0.2); color: #fff}
+
+/*------------------ INPUT WINDOW ---------------*/
+.floating-area{position: fixed; left: 0; right: 0; top:0px; background: #e8e8e8; z-index: 10; padding-top: 80px}
+.manage-input{ padding-bottom: 24px; /*border-bottom: 1px solid #ddd; box-shadow: 0 1px 1px 0 #fff;*/ }
+
+/*------------------ OUTPUT TABLE  ---------------*/
+.table-area{padding-top: 10px;}
+
+/*------------------ TABLE  ---------------*/
+.table-area table thead tr{color: #0095da }
+.table-btn{white-space: nowrap; text-align: center;}
+.table-btn .btn{padding: 2px 10px !important}
+
+/*-------------------- ALERT DIALOG -----------*/
+.dlg-window{border: 1px solid  rgba(0,0,0,0.1); position: fixed; top: 20px; left: auto; right: 30px; border-radius: 4px; z-index: 2100; background: rgba(0,0,0,0.8); color: #fff;padding: 10px 30px 10px 15px;} 
+.dlg-window > .dlg-title {margin: 0; font-size:14px; font-weight: bold;}
+.dlg-window > p {padding-top:5px; margin: 0; font-size: 12px;}
+.dlg-window > .dlg-close{position: absolute; top:10px; right: 10px; left:auto; font-size: 24px; line-height: 14px; cursor:pointer; color: #ddd;}
+.dlg-window > .dlg-close:hover{color: #fff; text-shadow: 0 0 10px #fff;}
+.dlg-window.success{background: rgba(68,157,68,0.8);}
+.dlg-window.warning{background: rgba(236,151,31,0.8);}
+.dlg-window.danger{background: rgba(208,48,41,0.8);}
+
+/*------------------ COMMON  ---------------*/
+.w50{width: 50px}
+.w75{width: 75px}
+.w100{width: 100px}
+.w150{width: 150px}
+.w200{width: 200px}
+
+/*------------------ R MODAL -------------------*/
+.r-modal{ position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 2020; background: rgba(0,0,0,0.4) ; padding: 15px;}
+.r-modal > .block{max-width: 600px; background: #fff; box-shadow: 0 5px 5px 0px rgba(0,0,0,0.2); border-radius: 4px; border: 1px solid #ddd; margin: 0 auto; margin-top: 60px }
+.r-modal > .block > .header{position: relative;padding: 15px;}
+.r-modal > .block > .header h3{margin-top: 0; margin-bottom: 0}
+.r-modal > .block > .header .r-close{position: absolute; right: 15px; left: auto; top: 15px; border: 0; background: transparent; color: #777; font-size: 30px; line-height: 22px}
+.r-modal > .block  .content{padding: 15px;}
+.r-modal > .block  .footer{padding: 15px; border-top: 1px solid #ddd; background: #eee; }
+
+
+
+
+/*------------------ LOGIN -------------------*/
+.manual-input {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 100px;
+}
+
+.manual-alert{
+max-width: 640px;
+margin: 0 auto;
+text-align: center;
+}
+.manual-alert > span{
+    display: inline-block;
+}
+
+/************************** MANUAL INPUT*/
+.manual-input-heading{
+    color: #0095DA;
+    /*text-shadow: 0 1px 1px rgba(0 ,0,0,0.2)*/
+}
+
+.manual-input .manual-text{
+    border-radius:  0;
+    border-width: 0;
+    box-shadow: none;
+    height: 40px;
+    padding: 8px 36px 8px 12px;
+    border: 1px solid #ddd;
+}
+.manual-input .manual-text.error {
+    color: tomato;
+}
+.manual-input .manual-text:focus{
+    box-shadow: none;}
+
+.manual-input .manual-text.up{
+    border-radius: 4px 4px 0 0;
+
+}
+.manual-input .manual-text.down{
+    border-radius: 0 0 4px 4px;
+    /*border-top: 1px solid #bee5f7;*/
+    border-top-width: 0px;
+    box-shadow: 0 3px 4px -1px rgba(0,0,0,0.15);
+}
+.manual-input .manual-btn{
+    margin-top: 15px;
+    border-width: 0px;
+    box-shadow: 0 3px 4px -1px rgba(0,0,0,0.15);
+}
+
+.manual-input .manual-refresh{
+    position: absolute;
+    right: -20px;
+    bottom: 28px;
+    top: auto;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.text-block{
+    margin:0;
+    padding:0;
+    position:relative;
+}
+
+.text-block > .glyphicon{
+    position: absolute;
+    left: auto;
+    right: 12px;
+    top: 12px;
+    color: #aaa;
+    font-size: 15px;
+    
+}
+
+.text-block > .manual-error{
+    color: #fff;
+    position: absolute;
+    font-size: 12px;    
+    top: 12px;
+    left: 311px;
+    white-space: nowrap;
+
+}

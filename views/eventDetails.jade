@@ -1,0 +1,56 @@
+.row
+	.col-md-4
+		.card(window-height="", ng-style="{'height':newH}")
+			.list
+				.list-item.fx-stagger-500.fx-fade-up.fx-ease-sine(ng-repeat="event in EDC.events track by $index", ng-click="EDC.selectEvent($index); EDC.getEventDetails(event.event_id)", ng-class="{'active':EDC.selected == $index}" )
+					span.circ(ng-bind="event.event_id")
+					h3.ellipsis(ng-bind="event.event_title")
+					h4.ellipsis(ng-bind="event.event_desc")
+					h4(ng-if="event.event_desc == ''") No description available
+	.col-md-8
+		.card(window-height="", ng-style="{'height':newH}" )
+			.sub-nav
+				.circ.white(ng-bind="EDC.currentRecord.event_id")
+				h2.ellipsis(ng-bind="EDC.currentRecord.event_title")
+				.commands
+					button.btn-icon(tool-tip="Edit Event", ng-click="EDC.toggleModalEdit()")
+						span.glyphicon.glyphicon-pencil
+			.content
+				.block
+					h3 Description
+					h4(ng-bind="EDC.currentRecord.event_desc")
+					h4(ng-if="EDC.currentRecord.event_desc == ''") No description available
+				.block
+					h3 Images
+					div
+						span.thumb-holder(ng-repeat="img in EDC.imageDetails")
+							img.thumb(ng-src="{{img.image_url}}" ng-if="img.active =='A'" )
+							span.fname(ng-bind="EDC.getNameByPath(img.image_url)")
+				.block
+					h3 Assigned tv(s)
+					table.table.table-blank.mhead
+						thead
+							tr
+								th
+									label TV
+								th
+									label START TIME
+								th
+									label END TIME
+						tbody
+							tr.this-row(ng-repeat="tv in EDC.tvDetails track by $index" ng-if="tv.active == 'A'")
+								td
+									span.tv-name(ng-bind="tv.tv_name", get-tv-details="{{tv.tv_id}}")
+								td
+									span(ng-bind="tv.start_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530")
+								td
+									span(ng-bind="tv.end_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530")
+
+
+//Add new Event
+button.btn-icon.btn-float(ng-click="EDC.toggleModal()" tool-tip="Add New Event" direction="left")
+	span.glyphicon.glyphicon-plus
+// Add modal
+.r-modal.ng-hide(ng-include="'views/addEvent.html'", ng-show='EDC.showModal', ng-controller='addEventController as AEC')
+// Edit modal
+.r-modal.ng-hide(ng-include="'views/editEvent.html'", ng-show='EDC.showEditModal', ng-controller='editEventController as EEC')

@@ -1,0 +1,92 @@
+
+<!--   Created by shridharp2 on 2/1/2016.-->
+<div class="block">
+  <div class="header">
+    <h3> Add Event</h3>
+    <button ng-click="EDC.toggleModal()" class="r-close">&#215;</button>
+  </div>
+  <form name="AEC.myForm" ng-submit="AEC.saveData()">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Event Title *</label>
+          <input type="text" placeholder="Title" unique-title="{{EDC.events}}" ng-pattern="AEC.pattern" name="eName" ng-model="AEC.eventName" required="required" class="form-control"/>
+          <div ng-show="AEC.myForm.eName.$touched &amp;&amp; AEC.myForm.eName.$error.required" class="has-error">Title is required!</div>
+          <div ng-show="AEC.myForm.eName.$error.pattern &amp;&amp; AEC.myForm.eName.$dirty" class="has-error">Alphanumeric characters only!</div>
+          <div ng-show="AEC.myForm.eName.$error.unique &amp;&amp; AEC.myForm.eName.$dirty" class="has-error">This title is already in use.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Desciption</label>
+          <textarea rows="2" name="desciption" placeholder="Desciption" ng-model="AEC.eventDesc" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group file-upload">
+          <label>Image Upload *</label>
+          <div>
+            <label class="btn btn-primary file-btn">Select Files
+              <input type="file" ngf-select="" ng-model="AEC.picFile" name="file" accept="image/*" ngf-max-size="2MB" required="" multiple="multiple" ngf-multiple="false" enctype="multipart/form-data"/>
+            </label>
+          </div>
+          <div class="thumb-gallery">
+            <div ng-repeat="img in AEC.picFile track by $index" class="thumb-container"><img ngf-src="img" class="thumb"/>
+              <button ng-click="AEC.removeImage($index)" class="thumb-close">&#215;</button><span ng-bind="img.name" class="fname"></span>
+            </div>
+          </div>
+          <div ng-show="AEC.myForm.file.$touched &amp;&amp; AEC.myForm.file.$error.required || AEC.isFile" class="has-error">Minimum one image required.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <table class="table table-blank">
+            <thead>
+              <tr>
+                <th>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="AEC.checkMaster" ng-change="AEC.checkAll();"/><span><b>TV</b></span>
+                    </label>
+                  </div>
+                </th>
+                <th>
+                  <label>START TIME</label>
+                </th>
+                <th>
+                  <label>END TIME</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="tv in AEC.tvs track by $index" ng-class="{'selected':tv.isChecked}" class="this-row">
+                <td class="td-check">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-required="!AEC.isTvChecked" value="{{tv.tv_id}}" ng-model="tv.isChecked"/><span ng-bind="tv.tv_name" get-tv-details="{{tv.tv_id}}"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <datetimepicker hour-step="1" minute-step="10" ng-model="tv.startTime" show-meridian="false" date-format="dd-MMM-yyyy" date-options="{showWeeks: false}" readonly-time="false" hidden-time="!tv.isChecked" readonly-date="!tv.isChecked" name="datetimepicker{{$index}}" show-spinners="true" date-opened="false" is-req="tv.isChecked"></datetimepicker>
+                </td>
+                <td>
+                  <datetimepicker hour-step="1" minute-step="10" min-date="tv.startTime" ng-model="tv.endTime" show-meridian="false" date-format="dd-MMM-yyyy" date-options="{showWeeks: false}" readonly-date="!tv.isChecked" hidden-time="!tv.isChecked" name="datetimepicker{{$index+100}}" show-spinners="true" readonly-time="false" date-opened="false" is-req="tv.isChecked"></datetimepicker>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div ng-hide="AEC.anySelected() " class="has-error">Minimum one scheduled TV required.</div>
+        </div>
+      </div>
+    </div>
+    <uib-progressbar max="100" value="100" type="info" ng-show="AEC.WaitForIt" class="progress-striped active"></uib-progressbar>
+    <div class="footer">
+      <div class="pull-right">
+        <button type="submit" ng-disabled="AEC.WaitForIt || AEC.myForm.$invalid" class="btn btn-success">Save</button>
+        <button type="button" ng-click="EDC.toggleModal()" class="btn btn-default">Cancel</button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </form>
+</div>

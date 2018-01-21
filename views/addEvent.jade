@@ -1,0 +1,96 @@
+//   Created by shridharp2 on 2/1/2016.
+
+.block
+	.header
+		h3  Add Event
+		button.r-close(ng-click="EDC.toggleModal()") &#215;
+
+	form(name="AEC.myForm", ng-submit="AEC.saveData()")
+		.content
+			.row
+				.col-md-12.form-group
+					label Event Title *
+					input.form-control(type="text", placeholder="Title", unique-title="{{EDC.events}}", ng-pattern="AEC.pattern", name="eName", ng-model="AEC.eventName", required)
+					.has-error(ng-show="AEC.myForm.eName.$touched && AEC.myForm.eName.$error.required") Title is required!
+					.has-error(ng-show="AEC.myForm.eName.$error.pattern && AEC.myForm.eName.$dirty") Alphanumeric characters only!
+					.has-error(ng-show="AEC.myForm.eName.$error.unique && AEC.myForm.eName.$dirty") This title is already in use.
+			.row
+				.col-md-12.form-group
+					label Desciption
+					textarea.form-control(rows="2", name="desciption", placeholder="Desciption", ng-model="AEC.eventDesc")
+			.row
+				.col-md-12.form-group.file-upload
+					label Image Upload *
+
+					div
+						label.btn.btn-primary.file-btn
+							| Select Files
+							input(type="file", ngf-select="", ng-model="AEC.picFile", name="file", accept="image/*", ngf-max-size="2MB", required="", multiple="multiple", ngf-multiple="false", enctype="multipart/form-data")
+					.thumb-gallery
+						.thumb-container(ng-repeat="img in AEC.picFile track by $index")
+							img.thumb(ngf-src="img")
+							button.thumb-close(ng-click="AEC.removeImage($index)") &#215;
+							span.fname(ng-bind="img.name")
+					.has-error(ng-show="AEC.myForm.file.$touched && AEC.myForm.file.$error.required || AEC.isFile") Minimum one image required.
+			.row
+				.col-md-12.form-group
+					table.table.table-blank
+						thead
+							tr
+								th
+									.checkbox
+										label
+											input(type="checkbox", ng-model="AEC.checkMaster", ng-change="AEC.checkAll();")
+											span
+												b TV
+								th
+									label START TIME
+								th
+									label END TIME
+						tbody
+							tr.this-row(ng-repeat="tv in AEC.tvs track by $index", ng-class="{'selected':tv.isChecked}")
+								td.td-check
+									.checkbox
+										label
+											input(type="checkbox", ng-required="!AEC.isTvChecked", value="{{tv.tv_id}}", ng-model="tv.isChecked")
+											span(ng-bind="tv.tv_name" get-tv-details="{{tv.tv_id}}")
+								td
+									datetimepicker( hour-step="1",
+									minute-step="10",
+									ng-model="tv.startTime",
+									show-meridian="false",
+									date-format="dd-MMM-yyyy",
+									date-options="{showWeeks: false}",
+									readonly-time="false",
+									hidden-time="!tv.isChecked"
+									readonly-date="!tv.isChecked",
+									name="datetimepicker{{$index}}",
+									show-spinners="true",
+									date-opened="false",
+									is-req = "tv.isChecked")
+
+								td
+									datetimepicker( hour-step="1",
+									minute-step="10",
+									min-date="tv.startTime",
+									ng-model="tv.endTime",
+									show-meridian="false",
+									date-format="dd-MMM-yyyy",
+									date-options="{showWeeks: false}",
+									readonly-date="!tv.isChecked",
+									hidden-time="!tv.isChecked"
+									name="datetimepicker{{$index+100}}",
+									show-spinners="true",
+									readonly-time="false",
+									date-opened="false",
+									is-req = "tv.isChecked")
+
+					.has-error(ng-hide="AEC.anySelected() ") Minimum one scheduled TV required.
+
+		uib-progressbar(class="progress-striped active", max="100" value="100" type="info" ng-show="AEC.WaitForIt")
+
+		.footer
+			.pull-right
+				button.btn.btn-success(type="submit" ng-disabled="AEC.WaitForIt || AEC.myForm.$invalid") Save
+				button.btn.btn-default(type="button", ng-click="EDC.toggleModal()") Cancel
+			.clearfix

@@ -1,0 +1,67 @@
+<a href="#/tvlist"><h4 class="tvtitle">Get Tv Details</h4></a>
+<div class="row">
+  <div class="col-md-4">
+    <div window-height="" ng-style="{'height':newH}" class="card">
+      <div class="list">
+        <div ng-repeat="event in EDC.events track by $index" ng-click="EDC.selectEvent($index); EDC.getEventDetails(event.event_id)" ng-class="{'active':EDC.selected == $index}" class="list-item fx-stagger-500 fx-fade-up fx-ease-sine"><span ng-bind="event.event_id" class="circ"></span>
+          <h3 ng-bind="event.event_title" class="ellipsis"></h3>
+          <h4 ng-bind="event.event_desc" class="ellipsis"></h4>
+          <h4 ng-if="event.event_desc == ''">No description available</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div window-height="" ng-style="{'height':newH}" class="card">
+      <div class="sub-nav">
+        <div ng-bind="EDC.currentRecord.event_id" class="circ white"></div>
+        <h2 ng-bind="EDC.currentRecord.event_title" class="ellipsis"></h2>
+        <div class="commands">
+          <button tool-tip="Edit Event" ng-click="EDC.toggleModalEdit()" class="btn-icon"><span class="glyphicon glyphicon-pencil"></span></button>
+        </div>
+      </div>
+      <div class="content">
+        <div class="block">
+          <h3>Description</h3>
+          <h4 ng-bind="EDC.currentRecord.event_desc"></h4>
+          <h4 ng-if="EDC.currentRecord.event_desc == ''">No description available</h4>
+        </div>
+        <div class="block">
+          <h3>Images</h3>
+          <div><span ng-repeat="img in EDC.imageDetails" class="thumb-holder"><img ng-src="{{img.image_url}}" ng-if="img.active =='A'" class="thumb"/><span ng-bind="EDC.getNameByPath(img.image_url)" class="fname"></span></span></div>
+        </div>
+        <div class="block">
+          <h3>Assigned tv(s)</h3>
+          <table class="table table-blank mhead">
+            <thead>
+              <tr>
+                <th>
+                  <label>TV</label>
+                </th>
+                <th>
+                  <label>START TIME</label>
+                </th>
+                <th>
+                  <label>END TIME</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="tv in EDC.tvDetails track by $index" ng-if="tv.active == 'A'" class="this-row">
+                <td><span ng-bind="tv.tv_name" get-tv-details="{{tv.tv_id}}" class="tv-name"></span></td>
+                <td><span ng-bind="tv.start_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530"></span></td>
+                <td><span ng-bind="tv.end_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Add new Event-->
+<button ng-click="EDC.toggleModal()" tool-tip="Add New Event" direction="left" class="btn-icon btn-float"><span class="glyphicon glyphicon-plus"></span></button>
+<!-- Add modal-->
+<div ng-include="'views/addEvent.html'" ng-show="EDC.showModal" ng-controller="addEventController as AEC" class="r-modal ng-hide"></div>
+<!-- Edit modal-->
+<div ng-include="'views/editEvent.html'" ng-show="EDC.showEditModal" ng-controller="editEventController as EEC" class="r-modal ng-hide"></div>

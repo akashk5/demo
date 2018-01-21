@@ -1,0 +1,70 @@
+<a href="#/events"><h4 class="tvtitle">Get Event Details</h4></a> 
+
+<div class="row" >
+  <div class="col-md-4">
+    <div window-height="" ng-style="{'height':newH}" class="card">
+      <div class="list lheight">
+        <div ng-repeat="x in tvlist track by $index" ng-click="selecttv($index);gettvdetails($index)" ng-class="{'active':selected == $index}" class="list-item fx-stagger-500 fx-fade-up fx-ease-sine">
+        <span ng-bind="x.tv_id" class="circ"></span>
+          <h3 ng-bind="x.tv_name" class="ellipsis"></h3>
+          <h4 ng-if="x.tv_name == ''">No Name available</h4>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+	
+
+			
+	<div class="col-md-8" > <!-- column 2 start -->
+		<div window-height="" ng-style="{'height':newH}"class="card">
+			<div class="sub-nav">
+				<div ng-bind="tv_id1" class="circ white"></div>
+        		<h2 ng-bind="tv_name1" class="ellipsis"></h2>
+			</div>
+
+		<div ng-repeat="x in imageToFilter() | filter:filterImages"><br>
+		 <div class="content contentdiv">
+			<div class="eventdiv">
+				<div class="row block">
+					<h3>Event Title</h3>
+          			<h4 ng-bind="x.event_title"></h4>
+          			<h4 ng-if="x.event_title == ''">No Title</h4>
+				</div>
+				<div class="row block">
+					<h3>Description</h3> 
+					<h4 ng-bind="x.event_desc"></h4>
+          			<h4 ng-if="x.event_desc == ''">No Description</h4>
+				</div>
+				<div class="row block">
+					<h3>Images</h3> 
+					<div ng-repeat="idata in imgMyData | filter:{event_id: x.event_id}" class="Image">&nbsp;&nbsp;
+						<img ng-src="{{idata.image_url}}" height="100" width="100"/>
+					</div>
+				</div>
+				<div class="row block">
+					<table class="table table-blank mhead">
+            			<thead>
+              				<tr>
+              					<th>
+                  					<label>START TIME</label>
+                				</th>
+                				<th>
+                  					<label>END TIME</label>
+                				</th>
+              				</tr>
+            			</thead>
+            			<tbody>
+              				<tr>
+               					<td><span ng-bind="x.start_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530"></span></td>
+                				<td><span ng-bind="x.end_datetime | date : 'dd - MMM - yyyy  @ HH:mm' : +0530"></span></td>
+              				</tr>
+            			</tbody>
+          			</table>
+				</div>
+			</div><!--End Of eventdiv -->
+			</div>
+		</div><!--End Of repeat -->
+	</div><!-- End Of window height tag-->
+</div><!-- End Of column-->
+</div><!-- End Of row-->

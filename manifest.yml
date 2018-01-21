@@ -1,0 +1,14 @@
+---
+applications:
+
+- name: DMMApplication
+
+  memory: 512MB
+
+  instances: 1
+
+  host: DMMApplication
+
+  path: .
+  
+

@@ -1,0 +1,101 @@
+//   Created by shridharp2 on 2/3/2016.
+.block
+	.header
+		h3  Edit Event
+		button.r-close(ng-click="EDC.toggleModalEdit()") &#215;
+	form(name="EEC.myForm1", ng-submit="EEC.updateData()")
+		.content
+			.row
+				.col-md-12.form-group
+					label Event Title *
+					input.form-control(type="text", placeholder="Title", ng-pattern="EEC.pattern", name="eName", unique-title="{{EDC.events}}", ng-model="EEC.eventTitle", required)
+					.has-error(ng-show="EEC.myForm1.eName.$touched && EEC.myForm1.eName.$error.required") Title is required!
+					.has-error(ng-show="EEC.myForm1.eName.$error.pattern") Alphanumeric characters only!
+					.has-error(ng-show="EEC.myForm1.eName.$error.unique && EEC.myForm1.eName.$dirty") This title is already in use.
+
+			.row
+				.col-md-12.form-group
+					label Description
+					textarea.form-control(rows="2", placeholder="Desciption", ng-model="EEC.eventDescription")
+			.row
+				.col-md-12.form-group.file-upload
+					label Image Upload
+
+					div
+						label.btn.btn-primary.file-btn
+							| Select Files
+							input(type="file", ngf-select="", ng-model="EEC.picFile", name="file", accept="image/*", ngf-max-size="2MB",  multiple="multiple", ngf-multiple="false", enctype="multipart/form-data")
+					.thumb-gallery()
+						.thumb-container(ng-repeat="img in EEC.picFile track by $index")
+							img.thumb(ngf-src="img")
+							button.thumb-close(ng-click="EEC.removeImage($index)") &#215;
+							span.fname(ng-bind="img.name")
+					div
+						span.thumb-block(ng-repeat="img in EEC.eventImages")
+							img.thumb(ng-src="{{img.image_url}}")
+							span.checkbox
+								label
+									input(type="checkbox", value="{{img.active}}", ng-model="img.active")
+							span.fname(ng-bind="EDC.getNameByPath(img.image_url)")
+
+					//.has-error(ng-show="EEC.isFile") Minimum one image required.
+			.row
+				.col-md-12.form-group
+					table.table.table-blank
+						thead
+							tr
+								th
+									.checkbox
+										label
+											input(type="checkbox", ng-model="EEC.checkMaster", ng-change="EEC.checkAll();")
+											span TV
+								th
+									label Start time
+								th
+									label End time
+						tbody
+							tr.this-row(ng-repeat="tv in EEC.allTvs track by $index", ng-class="{'selected':tv.isChecked}")
+								td.td-check
+									.checkbox
+										label
+											input(type="checkbox", value="{{tv.tv_id}}", ng-required="!EEC.isTvChecked", ng-model="tv.isChecked")
+											span(ng-bind="tv.tv_name" get-tv-details="{{tv.tv_id}}")
+								td
+									datetimepicker( hour-step="1",
+									minute-step="10",
+									ng-model="tv.start_datetime",
+									show-meridian="false",
+									date-format="dd-MMM-yyyy",
+									date-options="{showWeeks: false}",
+									readonly-time="false",
+									hidden-time="!tv.isChecked"
+									readonly-date="!tv.isChecked",
+									name="datetimepicker{{$index}}",
+									show-spinners="true",
+									date-opened="false",
+									is-req = "tv.isChecked")
+
+								td
+									datetimepicker( hour-step="1",
+									minute-step="10",
+									min-date="tv.start_datetime",
+									ng-model="tv.end_datetime",
+									show-meridian="false",
+									date-format="dd-MMM-yyyy",
+									date-options="{showWeeks: false}",
+									readonly-time="false",
+									hidden-time="!tv.isChecked"
+									readonly-date="!tv.isChecked",
+									name="datetimepicker{{$indedx+100}}",
+									show-spinners="true",
+									date-opened="false",
+									is-req = "tv.isChecked")
+
+					.has-error(ng-hide="EEC.anySelected()") Minimum one scheduled TV required.
+		uib-progressbar(class="progress-striped active", max="100" value="100" type="info" ng-show="EEC.WaitForIt")
+		.footer
+			.pull-right
+				button.btn.btn-success(type="submit", ng-disabled="EEC.WaitForIt") Update
+				button.btn.btn-default(type="button", ng-click="EDC.toggleModalEdit()") Cancel
+			.clearfix
+

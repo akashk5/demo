@@ -1,0 +1,535 @@
+html,body
+	font-family 'Open Sans', sans-serif
+	height 100%
+
+body
+	padding-top 80px
+	color #444
+	background #eee
+
+*
+	outline none !important
+
+nav
+	&.navbar
+		background-color #0095da
+		color #fff
+		border-bottom 5px solid #D7DF23
+		box-shadow 0 3px 4px -1px rgba(0,0,0,0.2)
+
+.navbar
+	.navbar-header
+		.navbar-brand
+			img
+				display inline-block
+			.app-name
+				float right
+				font-size 14px
+				color #eee
+				line-height 14px
+				margin-left 8px
+				margin-top 10px
+				font-style italic
+
+.navbar-default
+	.navbar-nav
+		& > li
+			& > a
+				color #ddd
+				&:hover
+					color #fff
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus
+	background-color rgba(255,255,255,0.2)
+	color #fff
+
+.card
+	padding 0
+	overflow-y auto
+	background #fff
+	border-radius 4px
+	position relative
+	box-shadow 0 4px 10px -4px rgba(0,0,0,0.15)
+	.sub-nav
+		min-height 70px
+		background #4CAF50
+		padding 15px 65px 15px 65px
+		position relative
+		color #fff
+		.commands
+			position: absolute
+			right: 15px
+			top: 15px
+	.circ
+		height 40px
+		width 40px
+		border-radius 50%
+		color #fff
+		line-height 40px
+		font-size 18px
+		font-weight 400
+		text-align center
+		background-color #4CAF50
+		position absolute
+		left 15px
+		top 15px
+		&.white
+			background-color #fff
+			color #4CAF50
+	h2
+		font-size 24px
+		font-weight 300
+		margin 0
+		line-height 40px
+		max-width: 100%
+	h3
+		font-size 16px
+		font-weight bold
+		color #444
+		margin 0 0 6px 0
+	h4
+		font-size 14px
+		font-weight normal
+		color #888
+		margin 0 0 4px 0
+		overflow hidden
+
+.ellipsis
+	max-width inherit
+	overflow hidden
+	white-space nowrap
+	text-overflow ellipsis
+
+
+.list
+	cursor pointer
+	.list-item
+		padding 15px
+		border-bottom 1px solid #eee
+		position relative
+		padding-left 65px
+		&:hover
+			background #effaff
+		&.active
+			background #effaff
+			box-shadow 0 5px 8px -5px rgba(0,0,0,0.1) inset, 0 -5px 8px -5px rgba(0,0,0,0.1) inset
+		&:last-child
+			border-bottom none
+
+.content
+	padding 0 15px
+	.block
+		padding 15px 0
+		border-bottom 1px solid rgba(0,0,0,0.06)
+		&:last-child
+			border-bottom none
+
+.thumb-holder
+	display inline-block
+	margin-bottom 15px
+	position relative
+.fname
+	position: absolute;
+	left: 0;
+	top: 90px;
+	max-width: inherit;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #666;
+	display: inline-block;
+	width: 100%;
+	padding-right: 10%;
+	font-size 12px
+
+.thumb
+	height 80px
+	margin 5px 15px 10px 0
+	border-radius 4px
+	display inline-block
+	box-shadow 1px 3px 3px 0px rgba(0,0,0,0.15)
+
+
+
+.thumb-block
+	display inline-block
+	position relative
+	margin-bottom 15px
+	.checkbox
+		position absolute
+		top 0px
+		left 8px
+
+.btn-icon
+	padding 0
+	height 40px
+	width 40px
+	line-height 1.42857143
+	border-radius 50%
+	border none
+	background transparent
+	text-align center
+	font-size 16px
+	&:hover
+		background rgba(255,255,255,0.1)
+	&.btn-float
+		position absolute
+		bottom 30px
+		left auto
+		right 30px
+		top auto
+		background: #F44336;
+		color: #fff;
+		box-shadow: 3PX 3px 10PX -1px rgba(0,0,0,0.5);
+
+.file-btn
+	margin 0
+	position relative
+	& > input[type="file"]
+		opacity 0
+		z-index 10
+		position absolute
+		width 100%
+		top 0
+		left 0
+		bottom 0
+
+.file-upload
+	.file-button
+		display inline-block
+		position relative
+		cursor pointer
+		input[type="file"]
+			opacity 0
+			position absolute
+			left 0
+			top 0
+			right 0
+			bottom 0
+			width 100%
+	.thumb-list
+		padding 10px 0
+		.thumb-container
+			display inline-block
+			margin-right 10px
+			margin-bottom 10px
+			position relative
+			overflow hidden
+			padding 5px 5px 30px 0
+			.thumb
+				margin 0
+				z-index 0
+				position relative
+			.cover
+				display none
+				z-index 10
+				position absolute
+				left 0
+				right 0
+				top 0
+				bottom 0
+				background-color rgba(0,0,0,0.4)
+			&:hover
+				.cover
+					display inline-block
+			.remove
+				font-size 40px
+				color #fff
+				cursor pointer
+				background transparent
+				border none
+				position absolute
+				top 20px
+				left 35%
+				line-height 40px
+				text-shadow 0 1px 1px rgba(0,0,0,0.6)
+			.thumb-content
+				position relative
+			.title
+				position absolute
+				max-width 100%
+				white-space nowrap
+				text-overflow ellipsis
+				overflow hidden
+				bottom 5px
+			.progress
+				height 5px
+				margin-bottom 3px
+				border-radius 2px
+	.drop
+		padding 10px
+		background #eeeeee
+		border-radius 4px
+		margin-top 10px
+		height 60px
+
+.table
+	&.table-blank
+		margin-bottom 5px
+		& > thead
+			& > tr
+				& > th
+					border-bottom-width 1px
+		& > tbody
+			& > tr
+				& > td
+					border-top-color #fff
+					padding 4px 8px
+					& > span
+						line-height 30px
+		label
+			margin-bottom 0px
+		&.mhead
+			& > thead
+				& > tr
+					color #666
+					& > th
+						border-bottom-width 0px
+						color #666
+						line-height normal
+						padding 10px 8px 4px 8px
+
+
+.table.table-blank .radio, .table.table-blank .checkbox
+	margin 5px 0 0 0
+	display: inline-block;
+	vertical-align: middle;
+
+.this-row
+	&.selected
+		background-color #effaff
+	.td-check
+		vertical-align middle
+
+.r-modal
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+	z-index 2020
+	background rgba(0,0,0,0.4)
+	padding 15px
+	overflow auto
+	& > .block
+		max-width 800px
+		min-width 600px
+		background #fff
+		box-shadow 0 5px 5px 0px rgba(0,0,0,0.2)
+		border-radius 4px
+		border 1px solid #ddd
+		margin 40px auto
+		& > .header
+			position relative
+			padding 15px
+			h3
+				margin-top 0
+				margin-bottom 0
+			.r-close
+				position absolute
+				right 15px
+				left auto
+				top 15px
+				border 0
+				background transparent
+				color #777
+				font-size 30px
+				line-height 22px
+		.content
+			padding 15px
+		.footer
+			padding 15px
+			border-top 1px solid #ddd
+			background #eee
+
+.thumb-gallery
+	margin-bottom 15px
+	.thumb-container
+		position relative
+		display inline-block
+		margin: 10px 15px 10px 0;
+		padding-top: 5px;
+		.thumb
+			margin 0
+		.thumb-close
+			position absolute
+			top 35px
+			margin-left 35%
+			color #fff
+			font-size 40px
+			border none
+			background transparent
+			line-height 18px
+			display none
+			text-shadow 0px 0px 15px #000
+		&:hover
+			.thumb
+				opacity 0.4
+			.thumb-close
+				display inline-block
+
+.manual-input
+	max-width 330px
+	padding 15px
+	margin 0 auto
+	position relative
+	margin-top 100px
+	.manual-text
+		border-radius 0
+		box-shadow none
+		height 40px
+		padding 8px 36px 8px 12px
+		border 1px solid #ddd
+		&.error
+			color tomato
+		&:focus
+			box-shadow none
+		&.up
+			border-radius 4px 4px 0 0
+		&.down
+			border-radius 0 0 4px 4px
+			border-top-width 0px
+			box-shadow 0 3px 4px -1px rgba(0,0,0,0.15)
+	.manual-btn
+		margin-top 15px
+		border-width 0px
+		box-shadow 0 3px 4px -1px rgba(0,0,0,0.15)
+	.manual-refresh
+		position absolute
+		right -20px
+		bottom 28px
+		top auto
+		font-size 20px
+		cursor pointer
+
+.manual-alert
+	max-width 640px
+	margin 0 auto
+	text-align center
+	& > span
+		display inline-block
+
+.manual-input-heading
+	color #0095DA
+
+.text-block
+	margin 0
+	padding 0
+	position relative
+	& > .glyphicon
+		position absolute
+		left auto
+		right 12px
+		top 12px
+		color #aaa
+		font-size 15px
+
+.ext-block
+	& > .manual-error
+		color #fff
+		position absolute
+		font-size 12px
+		top 12px
+		left 311px
+		white-space nowrap
+
+.has-error
+	font-size 12px
+	color: tomato
+	padding-top 3px
+
+
+// date picker
+.datetimepicker-wrapper
+	vertical-align middle
+	display inline-block
+	input
+		margin-bottom 0 !important
+		width 130px
+		height 26px
+		padding 4px 10px
+
+	.btn.btn-link
+		height 18px
+		padding 0 10px
+	.btn.btn-default
+		height: 26px;
+		line-height: 26px;
+		margin-left: 0px;
+		padding: 0 8px;
+		border: 0;
+		border-radius: 0;
+	.dropdown-menu
+		padding 10px;
+
+.datetimepicker-wrapper [ng-model=hours],
+.datetimepicker-wrapper [ng-model=minutes]
+	width 46px !important
+
+.tv-name
+	position relative
+	cursor pointer
+.float-dialog
+	position absolute
+	left calc(100% + 13px)
+	right auto
+	top -15px
+	padding 10px 5px
+	border 1px solid rgba(0,0,0,0.08)
+	background #FFFDE7
+	border-radius 4px
+	z-index 100
+	box-shadow 3px 3px 10px 0px rgba(0,0,0,0.1)
+	&:after
+		position absolute
+		content ""
+		height 0
+		width 0
+		border 10px solid transparent
+		border-left none
+		border-right 10px solid #FFFDE7
+		left -10px
+		top 12px
+		z-index 110
+	&:before
+		position absolute
+		content ""
+		height 0
+		width 0
+		border 10px solid transparent
+		border-left none
+		border-right 10px solid rgba(0,0,0,0.08)
+		left -11px
+		top 12px
+		z-index 110
+	.ferror
+		white-space nowrap
+	table
+		border none
+		tr
+			font-size 12px
+			line-height 18px
+			td
+				color #666
+				padding 2px 8px
+				white-space nowrap
+
+			th
+				color #444
+				padding 2px 8px
+				white-space nowrap
+				font-weight 600
+
+
+.progress
+	height 5px
+	margin-bottom 0
+
+
+
